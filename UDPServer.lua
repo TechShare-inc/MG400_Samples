@@ -10,7 +10,6 @@ if err == 0 then
 		err, buf = UDPRead(socket, 0)
 		
 		if err == 0 then
-			print("")
 			print("buf:",buf)
 		else
 			print("Read error ".. err)
