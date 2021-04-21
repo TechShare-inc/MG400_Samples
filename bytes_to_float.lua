@@ -1,6 +1,6 @@
 function bytes_to_float(x)
     
-  local b1 = x[1]
+  	local b1 = x[1]
 	local b2 = x[2]
 	local b3 = x[3]
 	local b4 = x[4]
