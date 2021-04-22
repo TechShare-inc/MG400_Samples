@@ -1,3 +1,16 @@
+function Go_xyzr(x,y,z,r)
+
+	P = {}
+	P["tool"] = 0
+	P["armOrientation"]=right
+	P["load"]=0.000000 
+	P["coordinate"]={x, y, z, r, 0.000000, 0.000000 }
+	P["user"]=0.000000
+
+	Go(P,"Speed=100")
+	
+end
+
 function bytes_to_float(x)
     
   	local b1 = x[1]
@@ -59,10 +72,15 @@ if err == 0 then
 				
 			end
 			
-			print("x:",bytes_to_float(x))
-			print("y:",bytes_to_float(y))
-			print("z:",bytes_to_float(z))	
+			local px = bytes_to_float(x)
+			local py = bytes_to_float(y)
+			local pz = bytes_to_float(z)
 			
+			print("x:",px)
+			print("y:",py)
+			print("z:",pz)	
+		
+			Go_xyzr(px,py,pz,0)
 			
 		else
 			print("Read error ".. err)
