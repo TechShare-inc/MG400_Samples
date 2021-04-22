@@ -55,7 +55,7 @@ if err == 0 then
 			print("test")
 			err, buf = TCPRead(socket, 0)
 			if err == 0 then
-				-- Go関数にはSYNC=1をつけることが重要,あるとここでプログラムが停止する
+				
 				data = buf["buf"]
 				size = buf["size"]
 				print("data:",data)
