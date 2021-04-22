@@ -15,9 +15,14 @@ ADDRESS = "192.168.2.6" # A1 Atom IP adress
 
 sk = socket(AF_INET, SOCK_DGRAM)
 
+def move_xyz(x,y,z):
+    data = PacketUDP(x,y,z)
+    sk.sendto(data ,(ADDRESS, PORT))
 
-data = PacketUDP(300.0,50.0,100.0)
+move_xyz(300,0,50)
 
-sk.sendto(data ,(ADDRESS, PORT))
+while True:
+    move_xyz(300,-50,50)
+    move_xyz(300,50,50)
 
 sk.close()
