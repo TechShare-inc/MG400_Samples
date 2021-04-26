@@ -31,7 +31,7 @@ def move_xyz(x,y,z):
     tcp_client.send(data)
 
     # 4.サーバからのレスポンスを受信
-    response = tcp_client.recv(1)
+    response = tcp_client.recv(300)
     print("[*]Received a response : {}".format(response))
 
 move_xyz(300,0,50)
