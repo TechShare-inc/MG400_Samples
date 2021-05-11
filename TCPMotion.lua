@@ -1,3 +1,6 @@
+-- Version: Lua 5.4.1
+
+
 
 function Go_xyzr(x,y,z,r)
 
@@ -55,39 +58,82 @@ if err == 0 then
 			print("test")
 			err, buf = TCPRead(socket, 0)
 			if err == 0 then
-				
+        
 				data = buf["buf"]
 				size = buf["size"]
 				print("data:",data)
 				print("size:",size)
+        
+        		local id = 0
+        		local id_data = {}
+        
+        		for i=1,4 do
+          			id_data[i] = data[i]
+          		end
+        
+        		local id = bytes_to_float(id_data)
+        
+        		if id == 1 then
 				
-				local x = {}
-				local y = {}
-				local z = {}
-				
-				for i=1,size do
-
-					if i <= 4 then
-						x[i] = data[i]
-					elseif i <=8 then
-						y[i - 4] = data[i]
-					elseif i <= 12 then
-						z[i - 8] = data[i]
-					end
-					
-				end
-				
-				local px = bytes_to_float(x)
-				local py = bytes_to_float(y)
-				local pz = bytes_to_float(z)
-				
-				print("x:",px)
-				print("y:",py)
-				print("z:",pz)	
+					local x = {}
+					local y = {}
+					local z = {}
 			
-				Go_xyzr(px,py,pz,0)
+					for i=4,size do
+						if i <= 8 then
+							x[i - 4] = data[i]
+						elseif i <=12 then
+							y[i - 8] = data[i]
+						elseif i <= 16 then
+							z[i - 12] = data[i]
+						end
+					end
+				
+					local px = bytes_to_float(x)
+					local py = bytes_to_float(y)
+					local pz = bytes_to_float(z)
+				
+					print("x:",px)
+					print("y:",py)
+					print("z:",pz)	
+			
+					Go_xyzr(px,py,pz,0)
+          
+          		elseif id == 2 then
+          
+          			local pwr_data = {}
+          			local dir_data = {}
+          
+          			for i=4,size do
+						if i <= 8 then
+							pwr_data[i - 4] = data[i]
+						elseif i <=12 then
+							dir_data[i - 8] = data[i]
+              			end
+              		end
+          
+          			local pwr = bytes_to_float(pwr_data)
+          			local dir = bytes_to_float(dir_data)
+          			
+          			if pwr == 1 then
+          				DO(1,ON)
+              		else
+              			DO(1,OFF)
+                	end
+              		
+              		if dir == 1 then
+            			DO(2,ON)
+                  	else
+                  		DO(2,OFF)
+                    end
+          
+          			print("pwr:",pwr)
+          			print("dir:",dir)
+          
+          		end
 							
-				TCPWrite(socket, "finish motion!")
+				TCPWrite(socket, "finish!")
+        
 			else
 				print("Read error ".. err)
 				break
@@ -99,4 +145,8 @@ if err == 0 then
 	TCPDestroy(socket)
 else
   print("Create failed ".. err)
+end
+
+while true do
+  Wait(500)
 end
