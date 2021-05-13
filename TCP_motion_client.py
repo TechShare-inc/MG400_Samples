@@ -58,7 +58,7 @@ def pomp(p,d):
 
 x = 280
 y = 125
-z = -76
+z = -120
 
 move_xyz(x,0,0)
 
@@ -66,17 +66,20 @@ while True:
 
     move_xyz(x,y,0)
     move_xyz(x,y,z)
-    move_xyz(x,y,0)
 
     pomp(1,1)
     time.sleep(0.5)
+
+    move_xyz(x,y,0)
 
     y = -y
 
     move_xyz(x,y,0)
     move_xyz(x,y,z)
-    move_xyz(x,y,0)
 
     pomp(0,0)
+    time.sleep(0.5)
+
+    move_xyz(x,y,0)
 
     move_xyz(x,0,0)
