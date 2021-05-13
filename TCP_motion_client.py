@@ -5,6 +5,7 @@ import socket
 import os
 import struct
 import ctypes
+import time
 
 class PacketMoveXYZ(ctypes.Structure):
     _fields_ = [
@@ -55,10 +56,27 @@ def pomp(p,d):
     print("[*]Received a response : {}".format(response))
 
 
-move_xyz(300,0,50)
+x = 280
+y = 125
+z = -76
+
+move_xyz(x,0,0)
 
 while True:
-    move_xyz(300,-50,50)
+
+    move_xyz(x,y,0)
+    move_xyz(x,y,z)
+    move_xyz(x,y,0)
+
     pomp(1,1)
-    move_xyz(300,50,50)
+    time.sleep(0.5)
+
+    y = -y
+
+    move_xyz(x,y,0)
+    move_xyz(x,y,z)
+    move_xyz(x,y,0)
+
     pomp(0,0)
+
+    move_xyz(x,0,0)
