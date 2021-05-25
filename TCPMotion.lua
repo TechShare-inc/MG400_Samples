@@ -78,6 +78,7 @@ if err == 0 then
 					local x = {}
 					local y = {}
 					local z = {}
+          			local r = {}
 			
 					for i=4,size do
 						if i <= 8 then
@@ -86,18 +87,22 @@ if err == 0 then
 							y[i - 8] = data[i]
 						elseif i <= 16 then
 							z[i - 12] = data[i]
+              			elseif i <= 20 then
+              				r[i - 16] = data[i]
 						end
 					end
 				
 					local px = bytes_to_float(x)
 					local py = bytes_to_float(y)
 					local pz = bytes_to_float(z)
+          				local pr = bytes_to_float(r)
 				
 					print("x:",px)
 					print("y:",py)
 					print("z:",pz)	
+          				print("r:",pr)
 			
-					Go_xyzr(px,py,pz,0)
+					Go_xyzr(px,py,pz,pr)
           
           		elseif id == 2 then
           
