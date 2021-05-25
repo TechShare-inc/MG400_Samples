@@ -7,12 +7,13 @@ import struct
 import ctypes
 import time
 
-class PacketMoveXYZ(ctypes.Structure):
+class PacketMoveXYZR(ctypes.Structure):
     _fields_ = [
         ("id", ctypes.c_float),
         ("x", ctypes.c_float),
         ("y", ctypes.c_float),
         ("z", ctypes.c_float),
+        ("r", ctypes.c_float),
     ]
 
 
@@ -35,10 +36,10 @@ tcp_client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 tcp_client.connect((target_ip,target_port))
 
 
-def move_xyz(x,y,z):
+def move_xyz(x,y,z,r):
 
     # 3.サーバにデータを送信
-    data = PacketMoveXYZ(1,x,y,z)
+    data = PacketMoveXYZR(1,x,y,z,r)
     tcp_client.send(data)
 
     # 4.サーバからのレスポンスを受信
@@ -60,26 +61,26 @@ x = 280
 y = 125
 z = -120
 
-move_xyz(x,0,0)
+move_xyz(x,0,0,0)
 
 while True:
 
-    move_xyz(x,y,0)
-    move_xyz(x,y,z)
+    move_xyz(x,y,0,0)
+    move_xyz(x,y,z,0)
 
     pomp(1,1)
     time.sleep(0.5)
 
-    move_xyz(x,y,0)
+    move_xyz(x,y,0,0)
 
     y = -y
 
-    move_xyz(x,y,0)
-    move_xyz(x,y,z)
+    move_xyz(x,y,0,0)
+    move_xyz(x,y,z,0)
 
     pomp(0,0)
     time.sleep(0.5)
 
-    move_xyz(x,y,0)
+    move_xyz(x,y,0,0)
 
-    move_xyz(x,0,0)
+    move_xyz(x,0,0,0)
