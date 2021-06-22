@@ -10,11 +10,10 @@ TCP通信を使用した,外部ネットワーク機器とMG400の連携プロ�
 
 ![スライド2](https://user-images.githubusercontent.com/40942409/122848171-fb75c100-d343-11eb-99d1-82a356a672a0.JPG)
 
-
 ### 使い方
 - MG400側
 1. DobotStudio2020を起動し,MG400と接続
-2. MG400内で```TCPMotion.lua```を実行
+2. Scriptを開き```TCPMotion.lua```を貼り付け実行
 
 - 外部ネットワーク機器(Python実行環境があるもの)
 1. MG400のLAN2と外部ネットワーク機器を接続しIPアドレスをMG400と同一セグメントの```192.168.2.***```に設定
