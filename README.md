@@ -8,7 +8,7 @@
 
 ### システム構成図
 
-![スライド2](https://user-images.githubusercontent.com/40942409/122857996-78a93200-d354-11eb-9375-9722f0346a6e.JPG)
+![スライド2](https://user-images.githubusercontent.com/40942409/122858124-b6a65600-d354-11eb-8352-8e0c269af6ed.JPG)
 
 ### 使い方
 - MG400側
