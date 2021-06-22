@@ -15,8 +15,8 @@ TCP通信を使用した,外部ネットワーク機器とMG400の連携プロ�
 2. MG400内で```TCPMotion.lua```を実行
 
 - 外部ネットワーク機器(Python実行環境があるもの)
-1. MG400のLAN2と外部ネットワーク機器を接続
-2. ```TCP_motion_client.py```を実行
+1. MG400のLAN2と外部ネットワーク機器を接続しIPアドレスをMG400と同一セグメントの```192.168.2.***```に設定
+3. ```TCP_motion_client.py```を実行
 
 ```
 Python3 TCP_motion_client.py
