@@ -2,8 +2,7 @@
 ## ネットワーク連携
 ### 概念図
 
-![スライド2](https://user-images.githubusercontent.com/40942409/122847881-78ed0180-d343-11eb-8866-aa7265b3f05f.JPG)
-
+![スライド2](https://user-images.githubusercontent.com/40942409/122848171-fb75c100-d343-11eb-99d1-82a356a672a0.JPG)
 
 ### 説明
 外部機器からTCPで移動座標をMG400に送る
