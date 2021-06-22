@@ -1,13 +1,15 @@
 # MG400_Samples
 ## ネットワーク連携デモ
-### 概念図
-
-![スライド2](https://user-images.githubusercontent.com/40942409/122848171-fb75c100-d343-11eb-99d1-82a356a672a0.JPG)
 
 ### 説明
 
 TCP通信を使用した,外部ネットワーク機器とMG400の連携プログラム  
 汎用的なネットワークプロトコルのTCPを使用することで例えば,PC,PLCやシングルボードコンピュータ(Raspberry Pi等)とMG400を連携することができます。  
+
+### 概念図
+
+![スライド2](https://user-images.githubusercontent.com/40942409/122848171-fb75c100-d343-11eb-99d1-82a356a672a0.JPG)
+
 
 ### 使い方
 - MG400側
