@@ -1,6 +1,17 @@
 -- Version: Lua 5.4.1
 
+--[[
+	data[] = [ id   |     data     ]
+	id : 4bytes
+	data : 8~16bytes
 
+	id = 1 : dataは座標
+	data : 4bytesでfloatの値を示しており、データ長は(x,y,z,r)の4つの座標値で16bytes
+
+	id = 2 : エアポンプ制御信号
+	data : 4bytesでfloatの値を示しており、データ長はPWR,DIRの2つの制御信号で8bytes
+
+--]]
 
 function Go_xyzr(x,y,z,r)
 
@@ -48,16 +59,18 @@ local port=6001
 local err=0
 local socket=0 
 
+--通信ソケットの作成
 err, socket = TCPCreate(true, ip, port)
 
+--メイン開始
 if err == 0 then
-	err = TCPStart(socket, 0)
-	if err == 0 then
+	err = TCPStart(socket, 0)	--通信開始
+	if err == 0 then		--通信が確立したら
 		local buf
 		while true do
 			print("test")
-			err, buf = TCPRead(socket, 0)
-			if err == 0 then
+			err, buf = TCPRead(socket, 0)	--ソケットから座標読み取り
+			if err == 0 then		--うまくデータを受け取れたら保存
         
 				data = buf["buf"]
 				size = buf["size"]
@@ -73,7 +86,7 @@ if err == 0 then
         
         		local id = bytes_to_float(id_data)
         
-        		if id == 1 then
+        		if id == 1 then		--データを座標へ変換して移動
 				
 					local x = {}
 					local y = {}
@@ -87,8 +100,8 @@ if err == 0 then
 							y[i - 8] = data[i]
 						elseif i <= 16 then
 							z[i - 12] = data[i]
-              			elseif i <= 20 then
-              				r[i - 16] = data[i]
+						elseif i <= 20 then
+							r[i - 16] = data[i]
 						end
 					end
 				
@@ -104,7 +117,7 @@ if err == 0 then
 			
 					Go_xyzr(px,py,pz,pr)
           
-          		elseif id == 2 then
+          		elseif id == 2 then		--データをエアポンプ制御信号へ変換してエアポンプ動作
           
           			local pwr_data = {}
           			local dir_data = {}
