@@ -13,6 +13,7 @@
 
 --]]
 
+--移動の関数を定義
 function Go_xyzr(x,y,z,r)
 
 	P = {}
@@ -27,6 +28,7 @@ function Go_xyzr(x,y,z,r)
 	
 end
 
+--送られてきたデータ4byteからfloat型に変換する関数を定義
 function bytes_to_float(x)
     
   	local b1 = x[1]
