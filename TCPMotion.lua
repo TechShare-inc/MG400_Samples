@@ -93,8 +93,8 @@ if err == 0 then
 					local z = {}
           			local r = {}
 			
-					for i=4,size do
-						if i <= 8 then
+					for i=4,size do		--最初の4bytesはID用
+						if i <= 8 then	--4bytesごとに一つの座標値
 							x[i - 4] = data[i]
 						elseif i <=12 then
 							y[i - 8] = data[i]
@@ -160,7 +160,7 @@ if err == 0 then
 	else
 		print("Create failed ".. err)
 	end
-	TCPDestroy(socket)
+	TCPDestroy(socket)		--通信終了処理
 else
   print("Create failed ".. err)
 end
