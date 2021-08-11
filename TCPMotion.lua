@@ -1,5 +1,6 @@
 -- Version: Lua 5.4.1
 
+--0.ライブラリのインポートと関数定義
 --[[
 	data[] = [ id   |     data     ]
 	id : 4bytes
@@ -61,16 +62,18 @@ local port=6001
 local err=0
 local socket=0 
 
---通信ソケットの作成
+--1.ソケットオブジェクトの作成
 err, socket = TCPCreate(true, ip, port)
 
 --メイン開始
+--2.クライアントに接続
 if err == 0 then
 	err = TCPStart(socket, 0)	--通信開始
 	if err == 0 then		--通信が確立したら
 		local buf
 		while true do
 			print("test")
+			--3.データを受信する
 			err, buf = TCPRead(socket, 0)	--ソケットから座標読み取り
 			if err == 0 then		--うまくデータを受け取れたら保存
         
@@ -87,8 +90,9 @@ if err == 0 then
           		end
         
         		local id = bytes_to_float(id_data)
-        
-        		if id == 1 then		--データを座標へ変換して移動
+			
+			--4.id=1のとき、データを座標に変換して移動
+			if id == 1 then
 				
 					local x = {}
 					local y = {}
@@ -119,7 +123,8 @@ if err == 0 then
 			
 					Go_xyzr(px,py,pz,pr)
           
-          		elseif id == 2 then		--データをエアポンプ制御信号へ変換してエアポンプ動作
+          		--5.データをエアポンプ制御信号へ変換してエアポンプ動作
+			elseif id == 2 then
           
           			local pwr_data = {}
           			local dir_data = {}
@@ -162,7 +167,8 @@ if err == 0 then
 	else
 		print("Create failed ".. err)
 	end
-	TCPDestroy(socket)		--通信終了処理
+        --6.接続を終了
+	TCPDestroy(socket)
 else
   print("Create failed ".. err)
 end
