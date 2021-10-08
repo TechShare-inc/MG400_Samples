@@ -1,3 +1,5 @@
+Copyright © 2021 TechShare Inc. All Rights Reserved.
+
 # MG400_Samples
 ## ネットワーク連携デモ
 
@@ -22,3 +24,4 @@
 ```
 Python3 TCP_motion_client.py
 ```
+Copyright © 2021 TechShare Inc. All Rights Reserved.
