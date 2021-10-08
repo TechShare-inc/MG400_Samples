@@ -1,5 +1,5 @@
 -- Version: Lua 5.4.1
-
+-- Copyright © 2021 TechShare Inc. All Rights Reserved.
 function Go_xyzr(x,y,z,r)
 
 	P = {}
