@@ -1,5 +1,7 @@
 # -*- coding : UTF-8 -*-
 
+#Copyright © 2021 TechShare Inc. All Rights Reserved.
+
 # 0.ライブラリのインポートと変数定義
 import socket
 import os
