@@ -15,7 +15,7 @@
 --]]
 
 --移動の関数を定義
-function Go_xyzr(x,y,z,r)
+function MovL_xyzr(x,y,z,r)
 
 	P = {}
 	P["tool"] = 0
@@ -25,7 +25,7 @@ function Go_xyzr(x,y,z,r)
 	P["user"]=0.000000
 
 	-- SYNC=1が重要,ロボットが移動終了するのを待機
-	Go(P,"Speed=100 SYNC=1")
+	MovL(P,"Speed=100 SYNC=1")
 	
 end
 
@@ -121,7 +121,7 @@ if err == 0 then
 					print("z:",pz)	
           				print("r:",pr)
 			
-					Go_xyzr(px,py,pz,pr)
+					MovL_xyzr(px,py,pz,pr)
           
           		--5.データをエアポンプ制御信号へ変換してエアポンプ動作
 			elseif id == 2 then
