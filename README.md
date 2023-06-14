@@ -7,6 +7,8 @@ Copyright © 2021 TechShare Inc. All Rights Reserved.
 
 外部ネットワーク機器とMG400の連携デモ
 今回外部ネットワーク機器にはUbuntu18.04のPCを使用
+こちらのプログラムはMG400のファームウェアバージョン1.5.6.0以下向けの物です。
+
 
 ### システム構成図
 
